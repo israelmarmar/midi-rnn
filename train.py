@@ -124,7 +124,7 @@ def get_model(args, experiment_dir=None):
                   metrics=['accuracy'])
     return model, epoch
 
-def get_callbacks(experiment_dir, checkpoint_monitor='val_acc'):
+def get_callbacks(experiment_dir, checkpoint_monitor='val_accuracy'):
     
     callbacks = []
     
