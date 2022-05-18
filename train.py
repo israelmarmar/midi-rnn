@@ -224,6 +224,10 @@ def main():
     magic_number = 827
     start_time = time.time()
     print(len(midi_files))
+    print(args.batch_size)
+    print(args.num_epochs)
+    print(epoch)
+    print(train_generator)
     model.fit_generator(train_generator,
                         steps_per_epoch=len(midi_files) * magic_number / args.batch_size, 
                         epochs=args.num_epochs,
