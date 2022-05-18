@@ -90,7 +90,7 @@ def get_data_generator(midi_paths,
     while True:
         load_files = midi_paths[load_index:load_index + max_files_in_ram]
         # print('length of load files: {}'.format(len(load_files)))
-        load_index = (load_index + max_files_in_ram) % len(midi_paths)
+        load_index = (load_index + max_files_in_ram) % (len(midi_paths) if len(midi_paths) > 0 else 1)
 
         # print('loading large batch: {}'.format(max_files_in_ram))
         # print('Parsing midi files...')
