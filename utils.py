@@ -135,7 +135,7 @@ def load_model_from_checkpoint(model_dir):
        non_decimal = re.compile(r'[^\d]+')
        epoch = newest_checkpoint[-22:-19]
        epoch = non_decimal.sub('', epoch)
-       epoch = int(epoch)
+       epoch = int(epoch if epoch != '' else '0')
        model.load_weights(newest_checkpoint)
 
     return model, epoch
