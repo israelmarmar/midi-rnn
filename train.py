@@ -223,6 +223,7 @@ def main():
     # calculated from ~5K MIDI files from the Lakh MIDI Dataset.
     magic_number = 827
     start_time = time.time()
+    print(len(midi_files))
     model.fit_generator(train_generator,
                         steps_per_epoch=len(midi_files) * magic_number / args.batch_size, 
                         epochs=args.num_epochs,
