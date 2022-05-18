@@ -3,6 +3,7 @@ import pretty_midi
 import numpy as np
 from keras.models import model_from_json
 from multiprocessing import Pool as ThreadPool
+import re
 
 def log(message, verbose):
 	if verbose:
@@ -131,7 +132,10 @@ def load_model_from_checkpoint(model_dir):
                             key=os.path.getctime)
 
     if newest_checkpoint: 
-       epoch = int(newest_checkpoint[-22:-19])
+       non_decimal = re.compile(r'[^\d]+')
+       epoch = newest_checkpoint[-22:-19]
+       epoch = non_decimal.sub('', epoch)
+       epoch = int(epoch)
        model.load_weights(newest_checkpoint)
 
     return model, epoch
